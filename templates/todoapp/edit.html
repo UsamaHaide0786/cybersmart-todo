@@ -1,0 +1,59 @@
+{% extends "todoapp/base.html" %}
+{% block content %}
+
+<div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">Edit Your TODO HERE</h1>
+                </div>
+            </div>
+            <!-- Call to Action-->
+            <form id="todo-edit-form" method="put patch post" action="{% url 'edit-todo' %}">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <input type="hidden" class="form-control" id="id" aria-describedby="id" name="id" value={{ obj.id }} >
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value={{ obj.title }} placeholder="Enter title">
+                  </div>
+
+                <div class="form-group mb-4">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" aria-label="With textarea" name="description">{{ obj.description }}</textarea>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="location">Location</label>
+                    <select class="form-select" name="location" aria-label="Default select example">
+                      <option selected value={{ obj.location }} id="current-location">{{ obj.location }}</option>
+                      <option value="53.400002,-2.983333">Liverpool, the UK</option>
+                      <option value="55.860916,-4.251433">Glasgow, the UK</option>
+                      <option value="51.509865,-0.118092">London, the UK</option>
+                      <option value="53.483959,-2.244644">Manchester, UK</option>
+                      <option value="51.454514,-2.587910">Bristol, UK</option>
+                    </select>
+
+                </div>
+                <button type="button" class="btn btn-info mb-4" onclick="getLocation()">Use My Current Location</button>
+
+
+                {% if obj.is_completed == True %}
+                <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" name="iscompleted" checked="checked" id="iscompleted">
+                    <label class="form-check-label" for="iscompleted">Completed</label>
+                  </div>
+                    {% else %}
+                     <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" name="iscompleted" id="iscompleted">
+                    <label class="form-check-label" for="iscompleted">Completed</label>
+                  </div>
+                {% endif %}
+
+                  <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+    <hr>
+
+</div>
+
+{% endblock content %}
