@@ -17,14 +17,17 @@ $(document).ready(function() {
 var x = document.getElementById("current-location");
 
 function getLocation() {
+    console.log(document.getElementById("hidden-location").value.split("$"))
+    var val=document.getElementById("hidden-location").value.split("$")
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    // navigator.geolocation.getCurrentPosition(showPosition);
+      x.innerHTML = val[2];
+      x.value = val[0]+","+val[1]
   } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+  x.innerHTML = "${val[2]}";
 }

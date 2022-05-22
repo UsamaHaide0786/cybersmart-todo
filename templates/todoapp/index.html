@@ -5,7 +5,7 @@
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">Add Your TODO HERE</h1>
+                    <h1 class="font-weight-light">Add Your Task HERE</h1>
                 </div>
             </div>
             <!-- Call to Action-->
@@ -23,6 +23,7 @@
                 </div>
                 <div class="form-group mb-4">
                     <label for="location">Location</label>
+                    <input type="hidden" value="{{ current_location.lat }}${{ current_location.lng }}${{ current_location.address }}" name="hidden-location" id="hidden-location" placeholder="Enter">
                     <select class="form-select" name="location" aria-label="Default select example">
                       <option selected value="" id="current-location"></option>
                       <option value="53.400002,-2.983333">Liverpool, the UK</option>
@@ -52,11 +53,12 @@
             <div class="row gx-4 gx-lg-5">
                 {% for item in data %}
                 <div class="col-md-4 mb-5">
-                    <div class="card h-100">
+                    <div class="card h-100 {{ item.weather }}">
                         <div class="card-body">
                             <h2 class="card-title">{{ item.title }}</h2>
                             <p class="card-text">{{ item.description }}</p>
                         </div>
+                        <div class="card-footer"><span>Current Temperature:   </span>{{ item.temperature }} <span>&#8451;</span></div>
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'show-todo' id=item.id %}">Edit</a> <a class="btn btn-danger btn-sm" href="{% url 'delete-todo' id=item.id %}">delete</a></div>
                     </div>
                 </div>

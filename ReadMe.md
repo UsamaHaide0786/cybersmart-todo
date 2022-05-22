@@ -22,3 +22,9 @@ To run project on your local system : `python manage.py runserver`
 ## Run Project On Docker
 Make sure docker is installed on your local system. Run the command
 `docker compose up`
+
+###Admin Panel Credentials
+```
+username: todo
+password: 12345678
+```

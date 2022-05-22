@@ -11286,3 +11286,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#todo-add-form{
+  display: none;
+}
+
+.blue{
+  background-color: #0398fc;
+}
+.yellow-orange{
+  background-color: #fcba03;
+}
+
+.red{
+  background-color: #e35049;
+}
+
+.fair{
+  background-color: #f5e2e1;
+}
