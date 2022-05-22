@@ -17,7 +17,8 @@ def weather_color(data):
         response = requests.get(
             f"https://api.openweathermap.org/data/2.5/weather?lat={val[0]}&lon={val[1]}&units=Metric&appid={os.environ['OPEN_WEATHER_API_KEY']}")
         item["weather"] = color_return(response.json()['weather'][0]['main'])
-        item["temperature"] = round(response.json()['main']['temp'], 2)
+        if not item['is_completed']:
+            item["temperature"] = round(response.json()['main']['temp'], 2)
         result.append(item)
     return result
 
