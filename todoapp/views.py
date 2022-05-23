@@ -37,7 +37,6 @@ def add(request):
     return redirect('/')
 
 
-@require_http_methods(["GET"])
 def show(request, id):
 
     """
@@ -49,7 +48,6 @@ def show(request, id):
     return render(request, 'todoapp/edit.html', context={"obj": obj, "current_location": current_location})
 
 
-@require_http_methods(["GET"])
 def update(request):
 
     """
@@ -74,7 +72,6 @@ def update(request):
     return redirect('/')
 
 
-@require_http_methods(["GET"])
 def delete(request, id):
 
     """
